@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "time.h"
 
 /*
 int board[25] = {
@@ -152,16 +153,15 @@ int GetComputerMove(int *board, const int side) {
 
 int GetHumanMove(const int *board) {
 	
-	char userInput[4];
+    char userInput[64];
 	
 	int moveOk = 0;
 	int move = -1;
 	
 	while (moveOk == 0) {
 	
-		printf("Please enter a move from 1 to 9:");		
-		fgets(userInput, 3, stdin);
-		fflush(stdin);
+		printf("Please enter a move from 1 to 9:");	
+		if(!fgets(rawInput, 64, stdin)) continue;
 		
 		if(strlen(userInput) != 2) {
 			printf("Invalid strlen()\n");
